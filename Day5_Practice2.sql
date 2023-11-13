@@ -22,6 +22,11 @@ WHERE post_date >= '01/01/2021' AND post_date < '01/01/2022'
 GROUP BY user_id
 HAVING COUNT(post_id) >=2
 ---Exercise 7:
+SELECT card_name,
+MAX(issued_amount)-MIN(issued_amount) AS difference
+FROM monthly_cards_issued
+GROUP BY card_name
+ORDER BY difference DESC
 ---Exercise 8:
 ---Exercise 9:
 ---Exercise 10:
