@@ -6,6 +6,7 @@ ORDER BY CITY ASC
 ---Exercise 2:
 SELECT COUNT(CITY)-COUNT(DISTINCT CITY) FROM STATION
 ---Exercise 3:
+SELECT CEILING(AVG(SALARY) - AVG(REPLACE(SALARY, '0', ''))) FROM EMPLOYEES
 ---Exercise 4:
 SELECT ROUND(CAST(SUM(item_count * order_occurrences) / SUM(order_occurrences) AS DECIMAL), 1) AS Mean FROM items_per_order
 ---Exercise 5:
