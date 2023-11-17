@@ -12,8 +12,9 @@ CASE
 FROM Triangle
 ---Exercise 3:
 ---Exercise 4:
-SELECT NAME FROM CUSTOMER
-WHERE REFEREE_ID != 2 OR REFEREE_ID IS NULL;
+SELECT name
+FROM Customer
+WHERE COALESCE(referee_id, name) != 2
 ---Exercise 5:
 select survived,
 SUM(CASE
