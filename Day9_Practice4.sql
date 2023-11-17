@@ -11,6 +11,12 @@ CASE
  WHEN x+y>z AND x+z>y AND y+z>x THEN 'Yes' ELSE 'No' END triangle
 FROM Triangle
 ---Exercise 3:
+SELECT
+ROUND(SUM(CASE 
+      WHEN call_category IS NULL THEN 1 
+      WHEN call_category = 'n/a' THEN 1
+      ELSE 0 END) *100/ COUNT(case_id),1) as call_percentage
+FROM callers
 ---Exercise 4:
 SELECT name
 FROM Customer
