@@ -26,6 +26,12 @@ ON a.user_id = b.user_id
 WHERE a.activity_type IN ('send','open')
 GROUP BY b.age_bucket
 ---Exercise 4:
+SELECT a.customer_id
+FROM customer_contracts AS a
+LEFT JOIN products AS b
+ON a.product_id = b.product_id
+GROUP BY a.customer_id
+HAVING COUNT(DISTINCT b.product_category)=3
 ---Exercise 5:
 ---Exercise 6:
 ---Exercise 7:
