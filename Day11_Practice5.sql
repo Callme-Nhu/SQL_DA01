@@ -72,6 +72,14 @@ ON t2.category_id=t3.category_id
 WHERE t3.name IN ('Drama','Sports')
 ORDER BY t1.length DESC
 ---Question 4:
+SELECT t3.name, COUNT(t1.title) AS soluong
+FROM film AS t1
+INNER JOIN film_category AS t2
+ON t1.film_id=t2.film_id
+INNER JOIN category AS t3
+ON t2.category_id=t3.category_id
+GROUP BY t3.name
+ORDER BY soluong DESC
 ---Question 5:
 ---Question 6:
 ---Question 7:
