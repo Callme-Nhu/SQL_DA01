@@ -95,5 +95,10 @@ ON t1.actor_id=t2.actor_id
 GROUP BY t1.first_name, last_name
 ORDER BY soluong DESC
 ---Question 6:
+SELECT COUNT(t1.address_id) AS soluong
+FROM address AS t1
+LEFT JOIN customer AS t2
+ON t1.address_id=t2.address_id
+WHERE t2.customer_id IS NULL
 ---Question 7:
 ---Question 8:
