@@ -42,6 +42,13 @@ ON a.reports_to=b.employee_id
 GROUP BY a.reports_to
 ORDER BY a.reports_to
 ---Exercise 6:
+SELECT t1.product_name,SUM(t2.unit) AS unit
+FROM Products AS t1
+RIGHT JOIN Orders AS t2
+ON t1.product_id=t2.product_id
+WHERE order_date BETWEEN '2020-02-01' AND '2020-02-29'
+GROUP BY t2.product_id
+HAVING SUM(t2.unit) >=100
 ---Exercise 7:
 SELECT t1.page_id 
 FROM pages AS t1
