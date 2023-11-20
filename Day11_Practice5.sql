@@ -33,5 +33,13 @@ ON a.product_id = b.product_id
 GROUP BY a.customer_id
 HAVING COUNT(DISTINCT b.product_category)=3
 ---Exercise 5:
+SELECT b.employee_id, b.name,
+COUNT(a.reports_to) AS reports_count,
+CEILING(AVG(a.age)) AS average_age
+FROM employees AS a
+JOIN employees AS b
+ON a.reports_to=b.employee_id
+GROUP BY a.reports_to
+ORDER BY a.reports_to
 ---Exercise 6:
 ---Exercise 7:
