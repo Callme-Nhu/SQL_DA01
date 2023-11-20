@@ -49,3 +49,12 @@ LEFT JOIN page_likes AS t2
 ON t1.page_id=t2.page_id
 WHERE t2.liked_date IS NULL
 ORDER BY t1.page_id 
+---MID-COURSE TEST
+---Question 1:
+---Question 2:
+---Question 3:
+---Question 4:
+---Question 5:
+---Question 6:
+---Question 7:
+---Question 8:
