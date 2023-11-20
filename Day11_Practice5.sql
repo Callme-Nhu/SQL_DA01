@@ -54,6 +54,10 @@ ORDER BY t1.page_id
 SELECT MIN(DISTINCT(replacement_cost)) AS min_cost
 FROM film 
 ---Question 2:
+SELECT 
+SUM(CASE
+ WHEN replacement_cost BETWEEN 9.99 AND 19.99 THEN 1 ELSE 0 END) low
+FROM film
 ---Question 3:
 ---Question 4:
 ---Question 5:
