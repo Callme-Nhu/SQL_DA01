@@ -112,3 +112,15 @@ ON t3.customer_id = t4.customer_id
 GROUP BY t1.city_id
 ORDER BY DT DESC
 ---Question 8:
+SELECT t1.city,t5.country,SUM(t4.amount) AS DT
+FROM city AS t1
+INNER JOIN address AS t2
+ON t1.city_id = t2.city_id
+INNER JOIN customer AS t3
+ON t2.address_id = t3.address_id
+INNER JOIN payment AS t4
+ON t3.customer_id = t4.customer_id
+INNER JOIN country AS t5
+ON t1.country_id = t5.country_id
+GROUP BY t1.city,t5.country 
+ORDER BY DT 
