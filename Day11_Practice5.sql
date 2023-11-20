@@ -51,6 +51,8 @@ WHERE t2.liked_date IS NULL
 ORDER BY t1.page_id 
 ---MID-COURSE TEST
 ---Question 1:
+SELECT MIN(DISTINCT(replacement_cost)) AS min_cost
+FROM film 
 ---Question 2:
 ---Question 3:
 ---Question 4:
