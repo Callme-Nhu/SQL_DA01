@@ -81,6 +81,12 @@ ON t2.category_id=t3.category_id
 GROUP BY t3.name
 ORDER BY soluong DESC
 ---Question 5:
+SELECT t1.first_name, t1.last_name, COUNT(t2.film_id) AS soluong
+FROM actor AS t1
+INNER JOIN film_actor AS t2
+ON t1.actor_id=t2.actor_id
+GROUP BY t1.first_name, last_name
+ORDER BY soluong DESC
 ---Question 6:
 ---Question 7:
 ---Question 8:
