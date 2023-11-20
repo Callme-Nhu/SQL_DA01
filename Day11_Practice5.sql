@@ -35,7 +35,7 @@ HAVING COUNT(DISTINCT b.product_category)=3
 ---Exercise 5:
 SELECT b.employee_id, b.name,
 COUNT(a.reports_to) AS reports_count,
-CEILING(AVG(a.age)) AS average_age
+ROUND(AVG(a.age),0) AS average_age
 FROM employees AS a
 JOIN employees AS b
 ON a.reports_to=b.employee_id
