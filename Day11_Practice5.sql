@@ -56,9 +56,21 @@ FROM film
 ---Question 2:
 SELECT 
 SUM(CASE
- WHEN replacement_cost BETWEEN 9.99 AND 19.99 THEN 1 ELSE 0 END) low
+ WHEN replacement_cost BETWEEN 9.99 AND 19.99 THEN 1 ELSE 0 END) low,
+SUM(CASE
+ WHEN replacement_cost BETWEEN 20.00 AND 24.99 THEN 1 ELSE 0 END) medium,
+SUM(CASE
+ WHEN replacement_cost BETWEEN 25.00 AND 29.99 THEN 1 ELSE 0 END) high
 FROM film
 ---Question 3:
+SELECT t1.title, t1.length,t3.name
+FROM film AS t1
+INNER JOIN film_category AS t2
+ON t1.film_id=t2.film_id
+INNER JOIN category AS t3
+ON t2.category_id=t3.category_id
+WHERE t3.name IN ('Drama','Sports')
+ORDER BY t1.length DESC
 ---Question 4:
 ---Question 5:
 ---Question 6:
