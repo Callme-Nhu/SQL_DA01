@@ -25,6 +25,26 @@ ON t1.user_id=t2.user_id
 WHERE t2.minus_month <> 0
 GROUP BY  t1.month
 ---Exercise 6:
+WITH twt1
+AS (SELECT LEFT(trans_date,7) AS month,
+country,
+COUNT(trans_date) AS trans_count,
+SUM(amount) AS trans_total_amount
+FROM transactions
+GROUP BY LEFT(trans_date,7),country),
+twt2 AS
+(SELECT country,COUNT(state) AS approved_count,
+SUM(amount) AS approved_total_amount,
+LEFT(trans_date,7) AS month
+FROM transactions
+WHERE state='approved'
+GROUP BY LEFT(trans_date,7),country)
+SELECT
+a.month, a.country,a.trans_count,COALESCE(b.approved_count,0) AS approved_count,a.trans_total_amount,COALESCE(b.approved_total_amount,0) AS approved_total_amount
+FROM twt1 AS a
+LEFT JOIN twt2 AS b
+ON a.country = b.country
+AND a.month=b.month
 ---Exercise 7:
 ---Exercise 8:
 ---Exercise 9:
