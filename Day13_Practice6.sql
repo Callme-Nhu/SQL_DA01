@@ -46,6 +46,15 @@ LEFT JOIN twt2 AS b
 ON a.country = b.country
 AND a.month=b.month
 ---Exercise 7:
+WITH twt1 AS (
+SELECT product_id, quantity, price
+FROM sales
+WHERE (product_id, year) IN ( SELECT product_id, MIN(year) FROM sales GROUP BY product_id)),
+twt2 AS
+(SELECT product_id, MIN(year) AS first_year FROM sales GROUP BY product_id)
+SELECT t1.product_id, t2.first_year, t1.quantity, t1.price
+FROM twt1 AS t1
+JOIN twt2 AS t2 ON t1.product_id = t2.product_id
 ---Exercise 8:
 ---Exercise 9:
 ---Exercise 10:
