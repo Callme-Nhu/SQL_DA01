@@ -69,3 +69,16 @@ WHERE a.manager_id IS NOT NULL ) AS new_table
 WHERE salary < 30000 AND name_manager IS NULL
 ORDER BY employee_id
 ---Exercise 10:
+WITH twt1
+AS (SELECT company_id, COUNT(title) AS count_title
+FROM job_listings
+GROUP BY company_id),
+twt2
+AS(SELECT company_id, COUNT(description) AS count_des
+FROM job_listings
+GROUP BY company_id)
+SELECT COUNT(*) AS duplicate_companies
+FROM twt1 AS t1
+JOIN twt2 AS t2
+ON t1.company_id=t2.company_id
+WHERE count_title > 1 AND count_des > 1
