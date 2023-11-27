@@ -56,5 +56,9 @@ SELECT t1.product_id, t2.first_year, t1.quantity, t1.price
 FROM twt1 AS t1
 JOIN twt2 AS t2 ON t1.product_id = t2.product_id
 ---Exercise 8:
+SELECT customer_id FROM (SELECT customer_id,COUNT(DISTINCT product_key) AS count_product_key 
+FROM customer
+GROUP BY customer_id) AS new_table
+WHERE count_product_key = (SELECT COUNT(product_key) FROM product)
 ---Exercise 9:
 ---Exercise 10:
