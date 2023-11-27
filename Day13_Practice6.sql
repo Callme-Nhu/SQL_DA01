@@ -61,4 +61,11 @@ FROM customer
 GROUP BY customer_id) AS new_table
 WHERE count_product_key = (SELECT COUNT(product_key) FROM product)
 ---Exercise 9:
+SELECT employee_id FROM (SELECT a.employee_id, a.name, a.manager_id,b.name AS name_manager,a.salary
+FROM employees AS a
+LEFT JOIN employees AS b
+ON a.manager_id=b.employee_id 
+WHERE a.manager_id IS NOT NULL ) AS new_table
+WHERE salary < 30000 AND name_manager IS NULL
+ORDER BY employee_id
 ---Exercise 10:
