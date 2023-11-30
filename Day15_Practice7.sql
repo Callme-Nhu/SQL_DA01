@@ -16,6 +16,16 @@ ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY transaction_date) AS xephang
 FROM transactions) AS a
 WHERE xephang=3
 ---Exercise 4:
+  WITH twt 
+AS (SELECT transaction_date, user_id, product_id, 
+RANK() OVER (PARTITION BY user_id ORDER BY transaction_date DESC) AS rank1
+FROM user_transactions) 
+SELECT  transaction_date, user_id,
+COUNT(product_id) AS purchase_count
+FROM twt
+WHERE rank1 = 1 
+GROUP BY transaction_date, user_id
+ORDER BY transaction_date
 ---Exercise 5:
 SELECT user_id, tweet_date,
 ROUND(AVG(tweet_count) OVER (PARTITION BY user_id ORDER BY tweet_date 
