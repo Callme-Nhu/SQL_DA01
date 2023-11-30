@@ -22,5 +22,14 @@ ROUND(AVG(tweet_count) OVER (PARTITION BY user_id ORDER BY tweet_date
 ROWS BETWEEN 2 PRECEDING AND CURRENT ROW),2) AS rolling_avg_3d
 FROM tweets
 ---Exercise 6:
+WITH twt AS
+(SELECT *, 
+EXTRACT(EPOCH FROM diff_time) / 60 AS minutes
+FROM (SELECT *,
+LEAD(transaction_timestamp) OVER(PARTITION BY merchant_id ORDER BY amount) AS next_time,
+(LEAD(transaction_timestamp) OVER(PARTITION BY merchant_id ORDER BY amount)  - transaction_timestamp) AS diff_time
+FROM transactions) AS a)
+SELECT COUNT(*) FROM twt
+WHERE ABS(minutes) <=10
 ---Exercise 7:
 ---Exercise 8:
