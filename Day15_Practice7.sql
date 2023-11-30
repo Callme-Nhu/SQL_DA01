@@ -16,7 +16,7 @@ ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY transaction_date) AS xephang
 FROM transactions) AS a
 WHERE xephang=3
 ---Exercise 4:
-  WITH twt 
+WITH twt 
 AS (SELECT transaction_date, user_id, product_id, 
 RANK() OVER (PARTITION BY user_id ORDER BY transaction_date DESC) AS rank1
 FROM user_transactions) 
