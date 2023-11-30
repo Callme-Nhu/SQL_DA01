@@ -32,4 +32,12 @@ FROM transactions) AS a)
 SELECT COUNT(*) FROM twt
 WHERE ABS(minutes) <=10
 ---Exercise 7:
+SELECT category, product,total_spend
+FROM(SELECT category,product,
+SUM(spend) AS total_spend,
+RANK()  OVER(PARTITION BY category ORDER BY SUM(spend) DESC) AS rankc
+FROM product_spend
+WHERE EXTRACT(year FROM transaction_date)  = 2022
+GROUP BY category,product) AS a
+WHERE rankc < 3
 ---Exercise 8:
