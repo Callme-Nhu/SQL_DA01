@@ -41,3 +41,16 @@ WHERE EXTRACT(year FROM transaction_date)  = 2022
 GROUP BY category,product) AS a
 WHERE rankc < 3
 ---Exercise 8:
+WITH twt
+AS(SELECT t1.artist_name,
+DENSE_RANK() OVER(ORDER BY COUNT(t2.song_id) DESC) AS artist_rank
+FROM artists t1
+JOIN songs t2
+ON t1.artist_id=t2.artist_id
+JOIN global_song_rank t3
+ON t2.song_id=t3.song_id
+WHERE t3.rank <=10 
+GROUP BY t1.artist_name)
+SELECT artist_name, artist_rank
+FROM twt
+WHERE artist_rank <=5
