@@ -64,3 +64,21 @@ GROUP BY t1.artist_name)
 SELECT artist_name, artist_rank
 FROM twt
 WHERE artist_rank <=5
+---CÁCH 2:
+WITH twt AS( SELECT c.artist_name,
+COUNT(*) AS counts
+FROM global_song_rank a
+JOIN songs b
+ON a.song_id=b.song_id
+JOIN artists c
+ON b.artist_id = c.artist_id
+WHERE a.rank <= 10
+GROUP BY c.artist_name),
+twt1 AS (
+SELECT artist_name,
+DENSE_RANK() OVER(ORDER BY counts DESC) AS artist_rank
+FROM twt)
+
+SELECT artist_name, artist_rank
+FROM twt1
+WHERE artist_rank <=5
